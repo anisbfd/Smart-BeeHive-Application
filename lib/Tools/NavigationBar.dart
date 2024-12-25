@@ -47,14 +47,8 @@ class NavigationMenu extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final Pages = [
-    Container(
-      color: Colors.amber,
-    ),
-    Container(
-      color: Colors.black,
-    ),
-    Container(
-      color: Colors.white,
-    ),
+    HomePage(),
+    HistoryPage(),
+    PersonalPage(),
   ];
 }

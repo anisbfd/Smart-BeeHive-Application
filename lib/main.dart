@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:beehive/pages/LoginPage.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-
   runApp(const MyApp());
 }
 
