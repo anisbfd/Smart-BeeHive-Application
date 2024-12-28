@@ -9,7 +9,7 @@ class CostumeTextField extends StatelessWidget {
     required this.label,
     this.hint = '',
     this.obscureText = false,
-  }) :super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +21,7 @@ class CostumeTextField extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: Text(
               label,
-              style: TextStyle(
-              color: Colors.amber,
-              fontFamily: 'Poppins'
-              ),
+              style: TextStyle(color: Colors.amber, fontFamily: 'Poppins'),
             ),
           ),
           Align(
@@ -33,24 +30,21 @@ class CostumeTextField extends StatelessWidget {
               height: 42,
               child: TextField(
                 style: TextStyle(
-                  color: Color.fromARGB(255, 45, 45, 45),
-                  fontFamily: 'Poppins'
-                ),
+                    color: Color.fromARGB(255, 45, 45, 45),
+                    fontFamily: 'Poppins'),
                 obscureText: obscureText,
                 decoration: InputDecoration(
                   hintText: hint,
-                  contentPadding: EdgeInsets.symmetric(horizontal: 12,vertical: 9),
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 12, vertical: 9),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide.none
-                  ),
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide.none),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(
-                      color:  const Color.fromARGB(111, 255, 193, 7),
-                      width: 2
-                    )
-                  ),
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(
+                          color: const Color.fromARGB(111, 255, 193, 7),
+                          width: 2)),
                   filled: true,
                   fillColor: Color(0xffABABAB),
                 ),
@@ -63,4 +57,3 @@ class CostumeTextField extends StatelessWidget {
     );
   }
 }
-
