@@ -15,17 +15,25 @@ class NavigationMenu extends StatelessWidget {
       backgroundColor: Colors.white,
       bottomNavigationBar: Obx(
         () => NavigationBar(
-          backgroundColor: Colors.amber,
+          indicatorShape: CircleBorder(),
+          backgroundColor: Color.fromARGB(255, 45, 45, 45),
           height: 60,
           selectedIndex: controller.selectedIndex.value,
           onDestinationSelected: (index) {
             controller.selectedIndex.value = index;
           },
           elevation: 0,
-          indicatorColor: null,
+          indicatorColor: Colors.transparent,
           destinations: [
             NavigationDestination(
-              icon: Icon(Icons.home),
+              selectedIcon: Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
+              icon: Icon(
+                Icons.home,
+                color: Color.fromARGB(255, 120, 120, 120),
+              ),
               label: 'Home',
             ),
             NavigationDestination(
