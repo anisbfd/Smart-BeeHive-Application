@@ -130,18 +130,46 @@ class HomePage extends StatelessWidget {
                         child: Stack(
                           children: [
                             Align(
-                                alignment: Alignment.bottomLeft,
-                                child: Display()),
-                            Align(
-                                alignment: Alignment.bottomRight,
-                                child: Display()),
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Display(),
-                            ),
+                                alignment: Alignment.topLeft,
+                                child: Display(
+                                  unit: '°C',
+                                  icon: FontAwesomeIcons.thermometerHalf,
+                                  title: 'Temperature',
+                                  value: 25,
+                                  max: 30,
+                                  min: 20,
+                                )),
                             Align(
                                 alignment: Alignment.topRight,
-                                child: Display()),
+                                child: Display(
+                                  unit: '°C',
+                                  icon: FontAwesomeIcons.thermometerHalf,
+                                  title: 'Temperature',
+                                  value: 2,
+                                  max: 3,
+                                  min: 2,
+                                )),
+                            Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Display(
+                                unit: '°C',
+                                icon: FontAwesomeIcons.thermometerHalf,
+                                title: 'Temperature',
+                                value: 2,
+                                max: 3,
+                                min: 2,
+                              ),
+                            ),
+                            Align(
+                                alignment: Alignment.bottomRight,
+                                child: Display(
+                                  unit: '°C',
+                                  icon: FontAwesomeIcons.thermometerHalf,
+                                  title: 'Temperature',
+                                  value: 2,
+                                  max: 3,
+                                  min: 2,
+                                )),
                           ],
                         ),
                       ),
@@ -163,7 +191,19 @@ class HomePage extends StatelessWidget {
 }
 
 class Display extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final int value;
+  final int max;
+  final int min;
+  final String unit;
   const Display({
+    required this.title,
+    required this.icon,
+    required this.value,
+    required this.max,
+    required this.min,
+    required this.unit,
     super.key,
   });
 
@@ -171,7 +211,7 @@ class Display extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 120,
-      width: 183,
+      width: 157,
       decoration: BoxDecoration(
         color: Color.fromARGB(255, 75, 75, 75),
         borderRadius: BorderRadius.circular(20),
@@ -187,7 +227,7 @@ class Display extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Text(
-                'Temperature',
+                title,
                 style: TextStyle(
                   color: Color.fromARGB(255, 160, 160, 160),
                   fontSize: 12,
@@ -198,7 +238,7 @@ class Display extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: Icon(
-                FontAwesomeIcons.thermometerHalf,
+                icon,
                 color: Color.fromARGB(255, 160, 160, 160),
                 size: 55,
               ),
@@ -206,7 +246,7 @@ class Display extends StatelessWidget {
             Positioned(
               top: 15,
               child: Text(
-                '25°C',
+                '$value$unit',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 35,
@@ -219,21 +259,21 @@ class Display extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    'Max: 30°C',
+                    'Max: $max$unit',
                     style: TextStyle(
                       color: Color.fromARGB(255, 160, 160, 160),
-                      fontSize: 12,
+                      fontSize: 11,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   SizedBox(
-                    width: 25,
+                    width: 20,
                   ),
                   Text(
-                    'Min: 20°C',
+                    'Min: $min°C',
                     style: TextStyle(
                       color: Color.fromARGB(255, 160, 160, 160),
-                      fontSize: 12,
+                      fontSize: 11,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
