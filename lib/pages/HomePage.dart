@@ -238,14 +238,27 @@ class HomePage extends StatelessWidget {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               children: [
-                                Sensor(),
+                                Sensor(
+                                  iconPath: 'Assets/Icons/temsensor.png',
+                                  sensor: 'DHT22',
+                                  title: 'temp/hum',
+                                ),
                                 SizedBox(width: 15),
-                                Sensor(),
+                                Sensor(
+                                  iconPath: 'Assets/Icons/irsensor.png',
+                                  sensor: 'Infrared Sensor',
+                                  title: 'Population',
+                                  size: 35,
+                                  padding: 6,
+                                ),
                                 SizedBox(width: 15),
-                                Sensor(),
-                                SizedBox(width: 15),
-                                Sensor(),
-                                SizedBox(width: 15),
+                                Sensor(
+                                  iconPath: 'Assets/Icons/watersensor.png',
+                                  sensor: 'SEN18',
+                                  title: 'Nurition Level',
+                                  size: 25,
+                                  padding: 10,
+                                ),
                               ],
                             )),
                       ),
@@ -253,6 +266,27 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 100,
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Today\'s Tasks',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
             ],
           )),
     );
@@ -260,7 +294,17 @@ class HomePage extends StatelessWidget {
 }
 
 class Sensor extends StatefulWidget {
+  final String sensor;
+  final String iconPath;
+  final String title;
+  final int size;
+  final double padding;
   const Sensor({
+    required this.sensor,
+    required this.title,
+    required this.iconPath,
+    this.size = 45,
+    this.padding = 0,
     super.key,
   });
 
@@ -268,14 +312,14 @@ class Sensor extends StatefulWidget {
   State<Sensor> createState() => _SensorState();
 }
 
-class _SensorState extends State<Sensor> {
-  bool sstatus = false;
+bool sstatus = true;
 
+class _SensorState extends State<Sensor> {
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 120,
-      width: 160,
+      width: 150,
       decoration: BoxDecoration(
           color: Color.fromARGB(255, 75, 75, 75),
           borderRadius: BorderRadius.circular(20)),
@@ -300,17 +344,39 @@ class _SensorState extends State<Sensor> {
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.topLeft,
+            Positioned(
+              top: 0,
+              left: widget.padding,
               child: SizedBox(
-                  height: 50, child: Image.asset("Assets/Icons/temsensor.png")),
+                  height: widget.size.toDouble(),
+                  child: Image.asset(widget.iconPath)),
             ),
-            Align(
-              alignment: Alignment.bottomLeft,
+            Positioned(
+              bottom: 0,
+              left: 10,
               child: SizedBox(
-                height: 40,
+                height: 46,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.title,
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 160, 160, 160),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    Text(
+                      widget.sensor,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -361,7 +427,7 @@ class Display extends StatelessWidget {
                 style: TextStyle(
                   color: Color.fromARGB(255, 160, 160, 160),
                   fontSize: 12,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),
