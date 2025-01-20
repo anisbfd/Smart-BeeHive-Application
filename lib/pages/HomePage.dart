@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -32,6 +33,7 @@ class HomePage extends StatelessWidget {
                             height: 32,
                             width: 140,
                             child: Stack(
+                              fit: StackFit.loose,
                               children: [
                                 Align(
                                     alignment: Alignment.centerLeft,
@@ -98,7 +100,8 @@ class HomePage extends StatelessWidget {
                         child: Center(
                           child: SizedBox(
                               height: 32,
-                              child: Image.asset('Assets/Icons/Settings.png')),
+                              child:
+                                  Image.asset('Assets/Designs/Centered.png')),
                         ),
                       ),
                     )
@@ -106,10 +109,10 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 40,
               ),
               SizedBox(
-                height: 290,
+                height: 285,
                 child: Stack(
                   children: [
                     Align(
@@ -118,15 +121,15 @@ class HomePage extends StatelessWidget {
                         'Hive Overview',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: SizedBox(
-                        height: 255,
+                        height: 240,
                         child: Stack(
                           children: [
                             Align(
@@ -138,37 +141,41 @@ class HomePage extends StatelessWidget {
                                   value: 25,
                                   max: 30,
                                   min: 20,
+                                  sz: 40,
                                 )),
                             Align(
                                 alignment: Alignment.topRight,
                                 child: Display(
-                                  unit: '°C',
-                                  icon: FontAwesomeIcons.thermometerHalf,
-                                  title: 'Temperature',
-                                  value: 2,
-                                  max: 3,
-                                  min: 2,
+                                  unit: '',
+                                  icon: MdiIcons.beeFlower,
+                                  title: 'Population',
+                                  value: 2570,
+                                  max: 300,
+                                  min: 200,
+                                  sz: 45,
                                 )),
                             Align(
                               alignment: Alignment.bottomLeft,
                               child: Display(
-                                unit: '°C',
-                                icon: FontAwesomeIcons.thermometerHalf,
-                                title: 'Temperature',
-                                value: 2,
-                                max: 3,
-                                min: 2,
+                                unit: '%',
+                                icon: MdiIcons.hexagonSlice4,
+                                title: 'Nurition Level',
+                                value: 20,
+                                max: 30,
+                                min: 20,
+                                sz: 40,
                               ),
                             ),
                             Align(
                                 alignment: Alignment.bottomRight,
                                 child: Display(
-                                  unit: '°C',
-                                  icon: FontAwesomeIcons.thermometerHalf,
-                                  title: 'Temperature',
-                                  value: 2,
-                                  max: 3,
-                                  min: 2,
+                                  unit: '%',
+                                  icon: FontAwesomeIcons.droplet,
+                                  title: 'Humidity',
+                                  value: 20,
+                                  max: 30,
+                                  min: 20,
+                                  sz: 35,
                                 )),
                           ],
                         ),
@@ -178,14 +185,135 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 15,
+                height: 20,
               ),
-              Container(
-                color: Colors.amber,
-                height: 100,
+              SizedBox(
+                height: 160,
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Sonsors',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: SizedBox(
+                        height: 30,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Settings',
+                              style: TextStyle(
+                                color: Colors.amber,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              color: Colors.amber,
+                              size: 13,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: SizedBox(
+                        height: 120,
+                        child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                Sensor(),
+                                SizedBox(width: 15),
+                                Sensor(),
+                                SizedBox(width: 15),
+                                Sensor(),
+                                SizedBox(width: 15),
+                                Sensor(),
+                                SizedBox(width: 15),
+                              ],
+                            )),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ],
           )),
+    );
+  }
+}
+
+class Sensor extends StatefulWidget {
+  const Sensor({
+    super.key,
+  });
+
+  @override
+  State<Sensor> createState() => _SensorState();
+}
+
+class _SensorState extends State<Sensor> {
+  bool sstatus = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 120,
+      width: 160,
+      decoration: BoxDecoration(
+          color: Color.fromARGB(255, 75, 75, 75),
+          borderRadius: BorderRadius.circular(20)),
+      child: Padding(
+        padding: EdgeInsets.only(top: 15, left: 5, right: 10, bottom: 15),
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: SizedBox(
+                height: 30,
+                width: 52,
+                child: FlutterSwitch(
+                  onToggle: (value) {
+                    setState(() {
+                      sstatus = value;
+                    });
+                  },
+                  value: sstatus,
+                  activeColor: Colors.amber,
+                  inactiveColor: Color.fromARGB(255, 160, 160, 160),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: SizedBox(
+                  height: 50, child: Image.asset("Assets/Icons/temsensor.png")),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: SizedBox(
+                height: 40,
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
@@ -197,6 +325,8 @@ class Display extends StatelessWidget {
   final int max;
   final int min;
   final String unit;
+  final int sz;
+
   const Display({
     required this.title,
     required this.icon,
@@ -204,18 +334,18 @@ class Display extends StatelessWidget {
     required this.max,
     required this.min,
     required this.unit,
+    this.sz = 50,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
-      width: 157,
+      height: 113,
+      width: 183,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 75, 75, 75),
-        borderRadius: BorderRadius.circular(20),
-      ),
+          color: Color.fromARGB(255, 75, 75, 75),
+          borderRadius: BorderRadius.circular(20)),
       child: Padding(
         padding: EdgeInsets.only(
           top: 15,
@@ -240,7 +370,7 @@ class Display extends StatelessWidget {
               child: Icon(
                 icon,
                 color: Color.fromARGB(255, 160, 160, 160),
-                size: 55,
+                size: sz.toDouble(),
               ),
             ),
             Positioned(
@@ -249,11 +379,31 @@ class Display extends StatelessWidget {
                 '$value$unit',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 35,
+                  fontSize: 30,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
+            Positioned(
+              top: 60,
+              child: Container(
+                height: 1,
+                width: 150,
+                color: Color.fromARGB(255, 160, 160, 160),
+              ),
+            ),
+            // Positioned(
+            //   top: 43,
+            //   right: 30,
+            //   child: Container(
+            //     height: 15,
+            //     width: 40,
+            //     decoration: BoxDecoration(
+            //       color: Colors.amber,
+            //       borderRadius: BorderRadius.circular(10),
+            //     ),
+            //   ),
+            // ),
             Align(
               alignment: Alignment.bottomLeft,
               child: Row(
@@ -267,10 +417,10 @@ class Display extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 20,
+                    width: 15,
                   ),
                   Text(
-                    'Min: $min°C',
+                    'Min: $min$unit',
                     style: TextStyle(
                       color: Color.fromARGB(255, 160, 160, 160),
                       fontSize: 11,
