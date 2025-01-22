@@ -5,6 +5,8 @@ final String location = 'Timezrit, Boum ...';
 int population = 35673;
 int bin = 342;
 int bout = 322;
+int freq = 10;
+String connection = 'Connected';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -278,7 +280,11 @@ class HomePage extends StatelessWidget {
                                                     Text(
                                                       'In: $bin',
                                                       style: TextStyle(
-                                                          color: Colors.white,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              160,
+                                                              160,
+                                                              160),
                                                           fontSize: 12,
                                                           fontWeight:
                                                               FontWeight.w500),
@@ -299,7 +305,11 @@ class HomePage extends StatelessWidget {
                                                     Text(
                                                       'Out: $bout',
                                                       style: TextStyle(
-                                                          color: Colors.white,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              160,
+                                                              160,
+                                                              160),
                                                           fontSize: 12,
                                                           fontWeight:
                                                               FontWeight.w500),
@@ -307,7 +317,8 @@ class HomePage extends StatelessWidget {
                                                     Icon(
                                                       Icons
                                                           .arrow_upward_rounded,
-                                                      color: Colors.white,
+                                                      color: Color.fromARGB(
+                                                          255, 160, 160, 160),
                                                       size: 12,
                                                     ),
                                                   ],
@@ -319,7 +330,8 @@ class HomePage extends StatelessWidget {
                                                 child: Text(
                                                   'Total: ${bin - bout}',
                                                   style: TextStyle(
-                                                      color: Colors.white,
+                                                      color: Color.fromARGB(
+                                                          255, 160, 160, 160),
                                                       fontSize: 14,
                                                       fontWeight:
                                                           FontWeight.w500),
@@ -330,39 +342,77 @@ class HomePage extends StatelessWidget {
                                         ),
                                       ),
                                       Align(
-                                        alignment: Alignment.bottomCenter,
-                                        child: GateControlling(),
-                                      )
-                                      // Center(
-                                      //   child: Row(
-                                      //     children: [
-                                      //       Text(
-                                      //         'In: 342',
-                                      //         style: TextStyle(
-                                      //           color: Colors.white,
-                                      //           fontSize: 12,
-                                      //         ),
-                                      //       ),
-                                      //       Icon(
-                                      //         Icons.arrow_downward_rounded,
-                                      //         color: Colors.white,
-                                      //         size: 12,
-                                      //       ),
-                                      //       Text(
-                                      //         'Out: 322',
-                                      //         style: TextStyle(
-                                      //           color: Colors.white,
-                                      //           fontSize: 12,
-                                      //         ),
-                                      //       ),
-                                      //       Icon(
-                                      //         Icons.arrow_upward_rounded,
-                                      //         color: Colors.white,
-                                      //         size: 12,
-                                      //       ),
-                                      //     ],
-                                      //   ),
-                                      // ),
+                                        alignment: Alignment.bottomLeft,
+                                        child: SizedBox(
+                                          height: 42.5,
+                                          child: Stack(
+                                            children: [
+                                              Align(
+                                                alignment: Alignment.topLeft,
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    Text(
+                                                      'Reading Frequency:  ',
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      '${freq}s ',
+                                                      style: TextStyle(
+                                                        color: Colors.amber,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                    Icon(
+                                                      Icons.edit,
+                                                      color: Colors.amber,
+                                                      size: 12,
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.bottomLeft,
+                                                    child: Text(
+                                                      "Status:  ",
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.bottomLeft,
+                                                    child: Text(
+                                                      connection,
+                                                      style: TextStyle(
+                                                        color: Colors.amber,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -651,33 +701,6 @@ class _SensorState extends State<Sensor> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class GateControlling extends StatefulWidget {
-  const GateControlling({super.key});
-
-  @override
-  State<GateControlling> createState() => _GateControllingState();
-}
-
-class _GateControllingState extends State<GateControlling> {
-  List<bool> isOpened = [
-    true,
-    false,
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return ToggleButtons(
-      color: Colors.amber,
-      onPressed: (index) {
-        setState(() {
-          isOpened[index] = !isOpened[index];
-        });
-      },
-      isSelected: isOpened,
-      children: [Icon(Icons.logout), Icon(Icons.login)],
     );
   }
 }

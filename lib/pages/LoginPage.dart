@@ -312,27 +312,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
-class GateControlling extends StatefulWidget {
-  const GateControlling({super.key});
-
-  @override
-  State<GateControlling> createState() => _GateControllingState();
-}
-
-class _GateControllingState extends State<GateControlling> {
-  List<bool> isOpened = [
-    true,
-    false,
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return ToggleButtons(
-      children: [Icon(Icons.logout), Icon(Icons.login)],
-      onPressed: (index) {
-        isOpened[index] = !isOpened[index];
-      },
-      isSelected: isOpened,
-    );
-  }
-}
