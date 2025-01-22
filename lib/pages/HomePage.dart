@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 final String location = 'Timezrit, Boum ...';
+int population = 35673;
+int bin = 342;
+int bout = 322;
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,7 +13,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Color.fromARGB(255, 45, 45, 45),
+          backgroundColor: Color.fromARGB(255, 35, 35, 35),
           body: ListView(
             padding: EdgeInsets.all(15),
             children: [
@@ -24,16 +25,18 @@ class HomePage extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 75, 75, 75),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                            // color: Color.fromARGB(255, 75, 75, 75),
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: Colors.amber,
+                              width: 1,
+                            )),
                         width: 170,
                         child: Center(
                           child: SizedBox(
                             height: 32,
                             width: 140,
                             child: Stack(
-                              fit: StackFit.loose,
                               children: [
                                 Align(
                                     alignment: Alignment.centerLeft,
@@ -92,8 +95,8 @@ class HomePage extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 75, 75, 75),
-                          borderRadius: BorderRadius.circular(30),
+                          // color: Color.fromARGB(255, 75, 75, 75),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         height: 50,
                         width: 50,
@@ -128,59 +131,247 @@ class HomePage extends StatelessWidget {
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
-                      child: SizedBox(
+                      child: Container(
+                        width: double.infinity,
                         height: 240,
-                        child: Stack(
-                          children: [
-                            Align(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.amber,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Stack(
+                            children: [
+                              Align(
                                 alignment: Alignment.topLeft,
-                                child: Display(
-                                  unit: '°C',
-                                  icon: FontAwesomeIcons.thermometerHalf,
-                                  title: 'Temperature',
-                                  value: 25,
-                                  max: 30,
-                                  min: 20,
-                                  sz: 40,
-                                )),
-                            Align(
-                                alignment: Alignment.topRight,
-                                child: Display(
-                                  unit: '',
-                                  icon: MdiIcons.beeFlower,
-                                  title: 'Population',
-                                  value: 2570,
-                                  max: 300,
-                                  min: 200,
-                                  sz: 45,
-                                )),
-                            Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Display(
-                                unit: '%',
-                                icon: MdiIcons.hexagonSlice4,
-                                title: 'Nurition Level',
-                                value: 20,
-                                max: 30,
-                                min: 20,
-                                sz: 40,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.amber,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 5,
+                                      horizontal: 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          'Overal Status ',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        Text(
+                                          '  OPTIMAL',
+                                          style: TextStyle(
+                                            color: Colors.amber,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                            Align(
+                              Positioned(
+                                right: 115,
+                                child: Container(
+                                  width: 1,
+                                  height: 220,
+                                  color: Colors.amber,
+                                ),
+                              ),
+                              Align(
                                 alignment: Alignment.bottomRight,
-                                child: Display(
-                                  unit: '%',
-                                  icon: FontAwesomeIcons.droplet,
-                                  title: 'Humidity',
-                                  value: 20,
-                                  max: 30,
-                                  min: 20,
-                                  sz: 35,
-                                )),
-                          ],
+                                child: SizedBox(
+                                  width: 100,
+                                  child: Column(
+                                    // itemExtent: 70,
+                                    // squeeze: 1.7,
+                                    children: [
+                                      Display(
+                                        scolor: Colors.red,
+                                        title: 'Temperture',
+                                        value: 35,
+                                        unit: '°C',
+                                      ),
+                                      Container(
+                                        height: 1,
+                                        color:
+                                            Color.fromARGB(255, 160, 160, 160),
+                                        margin: EdgeInsets.all(5),
+                                      ),
+                                      Display(
+                                        scolor: Colors.green,
+                                        title: 'Humidity',
+                                        value: 65,
+                                      ),
+                                      Container(
+                                        height: 1,
+                                        color:
+                                            Color.fromARGB(255, 160, 160, 160),
+                                        margin: EdgeInsets.all(5),
+                                      ),
+                                      Display(
+                                        title: 'Nurition Level',
+                                        value: 75,
+                                        scolor: Colors.red,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: SizedBox(
+                                  height: 170,
+                                  width: 170,
+                                  child: Stack(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          'Bee Count',
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 160, 160, 160),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 17.5,
+                                        left: 20,
+                                        child: Text(
+                                          '${population + bin - bout}',
+                                          style: TextStyle(
+                                            fontSize: 40,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 75,
+                                        left: 20,
+                                        child: SizedBox(
+                                          height: 40,
+                                          width: 130,
+                                          child: Stack(
+                                            children: [
+                                              Align(
+                                                alignment: Alignment.topLeft,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: [
+                                                    Text(
+                                                      'In: $bin',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.w500),
+                                                    ),
+                                                    Icon(
+                                                      Icons
+                                                          .arrow_downward_rounded,
+                                                      color: Colors.white,
+                                                      size: 12,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: Alignment.topLeft,
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      'Out: $bout',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.w500),
+                                                    ),
+                                                    Icon(
+                                                      Icons
+                                                          .arrow_upward_rounded,
+                                                      color: Colors.white,
+                                                      size: 12,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                                child: Text(
+                                                  'Total: ${bin - bout}',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.bottomCenter,
+                                        child: GateControlling(),
+                                      )
+                                      // Center(
+                                      //   child: Row(
+                                      //     children: [
+                                      //       Text(
+                                      //         'In: 342',
+                                      //         style: TextStyle(
+                                      //           color: Colors.white,
+                                      //           fontSize: 12,
+                                      //         ),
+                                      //       ),
+                                      //       Icon(
+                                      //         Icons.arrow_downward_rounded,
+                                      //         color: Colors.white,
+                                      //         size: 12,
+                                      //       ),
+                                      //       Text(
+                                      //         'Out: 322',
+                                      //         style: TextStyle(
+                                      //           color: Colors.white,
+                                      //           fontSize: 12,
+                                      //         ),
+                                      //       ),
+                                      //       Icon(
+                                      //         Icons.arrow_upward_rounded,
+                                      //         color: Colors.white,
+                                      //         size: 12,
+                                      //       ),
+                                      //     ],
+                                      //   ),
+                                      // ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -240,13 +431,13 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Sensor(
                                   iconPath: 'Assets/Icons/temsensor.png',
-                                  sensor: 'DHT22',
+                                  sensor: ' DHT-22',
                                   title: 'temp/hum',
                                 ),
                                 SizedBox(width: 15),
                                 Sensor(
                                   iconPath: 'Assets/Icons/irsensor.png',
-                                  sensor: 'Infrared Sensor',
+                                  sensor: ' Infrared',
                                   title: 'Population',
                                   size: 35,
                                   padding: 6,
@@ -254,7 +445,7 @@ class HomePage extends StatelessWidget {
                                 SizedBox(width: 15),
                                 Sensor(
                                   iconPath: 'Assets/Icons/watersensor.png',
-                                  sensor: 'SEN18',
+                                  sensor: ' SEN-18',
                                   title: 'Nurition Level',
                                   size: 25,
                                   padding: 10,
@@ -284,11 +475,85 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                    )
                   ],
                 ),
               )
             ],
           )),
+    );
+  }
+}
+
+class Display extends StatelessWidget {
+  final String title;
+  final int value;
+  final String unit;
+  final Color scolor;
+  const Display({
+    required this.title,
+    required this.value,
+    required this.scolor,
+    this.unit = '%',
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 62,
+      child: Stack(
+        children: [
+          // Positioned(
+          //   right: 0,
+          //   top: 5,
+          //   child: Container(
+          //     height: 7,
+          //     width: 7,
+          //     decoration: BoxDecoration(
+          //       color: scolor,
+          //       borderRadius: BorderRadius.circular(10),
+          //     ),
+          //   ),
+          // ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              title,
+              style: TextStyle(
+                  color: Color.fromARGB(255, 160, 160, 160),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          Positioned(
+            top: 15,
+            child: Text(
+              '$value$unit',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Row(
+              children: [
+                Text(
+                  'Min: 20        Max: 40',
+                  style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -318,20 +583,25 @@ class _SensorState extends State<Sensor> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
-      width: 150,
+      height: 110,
+      width: 130,
       decoration: BoxDecoration(
-          color: Color.fromARGB(255, 75, 75, 75),
-          borderRadius: BorderRadius.circular(20)),
+        // color: Color.fromARGB(255, 75, 75, 75),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: Colors.amber,
+          width: 1,
+        ),
+      ),
       child: Padding(
-        padding: EdgeInsets.only(top: 15, left: 5, right: 10, bottom: 15),
+        padding: EdgeInsets.only(top: 10, left: 5, right: 10, bottom: 8),
         child: Stack(
           children: [
             Align(
               alignment: Alignment.topRight,
               child: SizedBox(
-                height: 30,
-                width: 52,
+                height: 27,
+                width: 48,
                 child: FlutterSwitch(
                   onToggle: (value) {
                     setState(() {
@@ -364,13 +634,14 @@ class _SensorState extends State<Sensor> {
                       style: TextStyle(
                           color: Color.fromARGB(255, 160, 160, 160),
                           fontSize: 12,
-                          fontWeight: FontWeight.w700),
+                          fontWeight: FontWeight.w500),
                     ),
                     Text(
                       widget.sensor,
                       style: TextStyle(
+                          overflow: TextOverflow.ellipsis,
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold),
                     )
                   ],
@@ -384,121 +655,29 @@ class _SensorState extends State<Sensor> {
   }
 }
 
-class Display extends StatelessWidget {
-  final String title;
-  final IconData icon;
-  final int value;
-  final int max;
-  final int min;
-  final String unit;
-  final int sz;
-
-  const Display({
-    required this.title,
-    required this.icon,
-    required this.value,
-    required this.max,
-    required this.min,
-    required this.unit,
-    this.sz = 50,
-    super.key,
-  });
+class GateControlling extends StatefulWidget {
+  const GateControlling({super.key});
 
   @override
+  State<GateControlling> createState() => _GateControllingState();
+}
+
+class _GateControllingState extends State<GateControlling> {
+  List<bool> isOpened = [
+    true,
+    false,
+  ];
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 113,
-      width: 183,
-      decoration: BoxDecoration(
-          color: Color.fromARGB(255, 75, 75, 75),
-          borderRadius: BorderRadius.circular(20)),
-      child: Padding(
-        padding: EdgeInsets.only(
-          top: 15,
-          left: 15,
-          bottom: 15,
-        ),
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                title,
-                style: TextStyle(
-                  color: Color.fromARGB(255, 160, 160, 160),
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Icon(
-                icon,
-                color: Color.fromARGB(255, 160, 160, 160),
-                size: sz.toDouble(),
-              ),
-            ),
-            Positioned(
-              top: 15,
-              child: Text(
-                '$value$unit',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-            Positioned(
-              top: 60,
-              child: Container(
-                height: 1,
-                width: 150,
-                color: Color.fromARGB(255, 160, 160, 160),
-              ),
-            ),
-            // Positioned(
-            //   top: 43,
-            //   right: 30,
-            //   child: Container(
-            //     height: 15,
-            //     width: 40,
-            //     decoration: BoxDecoration(
-            //       color: Colors.amber,
-            //       borderRadius: BorderRadius.circular(10),
-            //     ),
-            //   ),
-            // ),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: Row(
-                children: [
-                  Text(
-                    'Max: $max$unit',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 160, 160, 160),
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    'Min: $min$unit',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 160, 160, 160),
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+    return ToggleButtons(
+      color: Colors.amber,
+      onPressed: (index) {
+        setState(() {
+          isOpened[index] = !isOpened[index];
+        });
+      },
+      isSelected: isOpened,
+      children: [Icon(Icons.logout), Icon(Icons.login)],
     );
   }
 }

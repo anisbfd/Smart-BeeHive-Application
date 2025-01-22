@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:beehive/pages/HomePage.dart';
-import 'package:beehive/pages/HistoryPage.dart';
+import 'package:beehive/pages/TasksPage.dart';
 import 'package:beehive/pages/PersonalPage.dart';
 
 class NavigationMenu extends StatelessWidget {
@@ -56,7 +56,7 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final Pages = [
     HomePage(),
-    HistoryPage(),
+    TasksPage(),
     PersonalPage(),
   ];
 }

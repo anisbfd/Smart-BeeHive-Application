@@ -8,9 +8,9 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 45, 45, 45),
+      backgroundColor: Color.fromARGB(255, 35, 35, 35),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 45, 45, 45),
+        backgroundColor: Color.fromARGB(255, 35, 35, 35),
         title: Center(
           child: Text(
             'BeeHive',
@@ -309,6 +309,30 @@ class MyHomePage extends StatelessWidget {
           )),
         ),
       ),
+    );
+  }
+}
+
+class GateControlling extends StatefulWidget {
+  const GateControlling({super.key});
+
+  @override
+  State<GateControlling> createState() => _GateControllingState();
+}
+
+class _GateControllingState extends State<GateControlling> {
+  List<bool> isOpened = [
+    true,
+    false,
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return ToggleButtons(
+      children: [Icon(Icons.logout), Icon(Icons.login)],
+      onPressed: (index) {
+        isOpened[index] = !isOpened[index];
+      },
+      isSelected: isOpened,
     );
   }
 }
